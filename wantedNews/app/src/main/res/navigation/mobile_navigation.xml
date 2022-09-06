@@ -3,23 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/nav_bottom_top_news">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.wantednews.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_bottom_top_news"
+        android:name="com.example.wantednews.ui.activity.main.fragment.topnews.TopNewsFragment"
+        android:label="@string/title_top_news"
+        tools:layout="@layout/fragment_news_list">
+        <action
+            android:id="@+id/action_news_detail_fragment"
+            app:destination="@id/newsDetailFragment"
+            app:popUpTo="@id/nav_bottom_top_news"
+            app:popUpToInclusive="true" />
+
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.wantednews.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/nav_bottom_categories"
+        android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoriesFragment"
+        android:label="@string/title_categories"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_category_news_list_fragment"
+            app:destination="@id/categoryNewsListFragment"
+            app:popUpTo="@id/nav_bottom_categories"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.wantednews.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/nav_bottom_saved"
+        android:name="com.example.wantednews.ui.activity.main.fragment.saved.SavedFragment"
+        android:label="@string/title_saved"
+        tools:layout="@layout/fragment_saved">
+        <action
+            android:id="@+id/action_news_detail_fragment"
+            app:destination="@id/newsDetailFragment"
+            app:popUpTo="@id/nav_bottom_saved"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.wantednews.ui.activity.main.common.fragment.news.NewsDetailFragment"
+        tools:layout="@layout/fragment_news_detail" />
+
+    <fragment
+        android:id="@+id/categoryNewsListFragment"
+        android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoryNewsListFragment"
+        tools:layout="@layout/fragment_news_list">
+        <action
+            android:id="@+id/action_news_detail_fragment"
+            app:destination="@id/newsDetailFragment"
+            app:popUpTo="@id/newsDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
