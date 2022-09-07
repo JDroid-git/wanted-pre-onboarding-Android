@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.PopupWindow
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.findNavController
 import com.example.wantednews.R
 import com.example.wantednews.constants.Constants
 import com.example.wantednews.data.TopHeadlinesData
 import com.example.wantednews.databinding.FragmentNewsListBinding
-import com.example.wantednews.server.ServerApi
+import com.example.wantednews.server.ServerService
 import com.example.wantednews.server.ServerCallback
 import com.example.wantednews.ui.activity.main.common.adapter.NewsListAdapter
 import okhttp3.ResponseBody
@@ -53,6 +55,7 @@ class TopNewsFragment : Fragment() {
         initData()
         initLayout()
         initListener()
+        initObserve()
 
         requestNewsList()
         return binding.root
@@ -75,8 +78,18 @@ class TopNewsFragment : Fragment() {
 
     }
 
+    private fun initObserve() {
+        val topNewsViewModel = ViewModelProvider(this)[TopNewsViewModel::class.java]
+        topNewsViewModel.isLoading.observe(viewLifecycleOwner) {
+            binding.progressBar.isVisible = it == true
+        }
+        topNewsViewModel.newsList.observe(viewLifecycleOwner) {
+
+        }
+    }
+
     private fun requestNewsList() {
         binding.progressBar.isVisible = true
-        ServerApi.getTopHeadlines(serverCallback, Constants.Countries.COUNTRY_KR, null, null, null, null)
+//        ServerService.getTopHeadlines(serverCallback, Constants.Countries.COUNTRY_KR, null, null, null, null)
     }
 }

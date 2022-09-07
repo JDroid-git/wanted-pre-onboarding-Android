@@ -14,7 +14,7 @@
             android:id="@+id/action_news_detail_fragment"
             app:destination="@id/newsDetailFragment"
             app:popUpTo="@id/nav_bottom_top_news"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
 
     </fragment>
 
@@ -27,7 +27,7 @@
             android:id="@+id/action_category_news_list_fragment"
             app:destination="@id/categoryNewsListFragment"
             app:popUpTo="@id/nav_bottom_categories"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -39,7 +39,7 @@
             android:id="@+id/action_news_detail_fragment"
             app:destination="@id/newsDetailFragment"
             app:popUpTo="@id/nav_bottom_saved"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
 
@@ -56,6 +56,6 @@
             android:id="@+id/action_news_detail_fragment"
             app:destination="@id/newsDetailFragment"
             app:popUpTo="@id/newsDetailFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

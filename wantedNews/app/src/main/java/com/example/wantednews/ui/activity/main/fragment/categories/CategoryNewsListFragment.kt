@@ -15,7 +15,7 @@ import com.example.wantednews.R
 import com.example.wantednews.constants.Constants
 import com.example.wantednews.data.TopHeadlinesData
 import com.example.wantednews.databinding.FragmentNewsListBinding
-import com.example.wantednews.server.ServerApi
+import com.example.wantednews.server.ServerService
 import com.example.wantednews.server.ServerCallback
 import com.example.wantednews.ui.activity.main.common.adapter.NewsListAdapter
 import okhttp3.ResponseBody
@@ -123,6 +123,6 @@ class CategoryNewsListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListene
     private fun requestNewsList(page: Int) {
         binding.progressBar.isVisible = true
         Log.d("pages", "$page")
-        ServerApi.getTopHeadlines(serverCallback, Constants.Countries.COUNTRY_KR, category, null, null, page)
+        ServerService.getTopHeadlines(serverCallback, Constants.Countries.COUNTRY_KR, category, null, null, page)
     }
 }
