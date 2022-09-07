@@ -17,6 +17,7 @@ class SavedFragment : Fragment() {
 
     private var _binding: FragmentNewsListBinding? = null
     private val binding get() = _binding!!
+    private var savedListAdapter: NewsListAdapter? = null
 
     private val onClickListener = object : NewsListAdapter.OnClickListener {
         override fun onItemClickListener(article: TopHeadlinesData.Article) {
@@ -31,6 +32,7 @@ class SavedFragment : Fragment() {
         initData()
         initLayout()
         initListener()
+        initObserve()
 
         return binding.root
     }
@@ -41,17 +43,23 @@ class SavedFragment : Fragment() {
     }
 
     private fun initData() {
-        SaveArticleDatabase.getInstance(requireContext().applicationContext)?.articleDao()?.getSavedList()?.observe(viewLifecycleOwner) {
-//            binding.newsList.adapter = NewsListAdapter(ArrayList(it.map { it.article }), onClickListener)
-        }
+
     }
 
     private fun initLayout() {
+        savedListAdapter = NewsListAdapter(onClickListener)
+        binding.newsList.adapter = savedListAdapter
 
-
+        binding.swipeLayout.isEnabled = false
     }
 
     private fun initListener() {
 
+    }
+
+    private fun initObserve() {
+        SaveArticleDatabase.getInstance(requireContext().applicationContext)?.articleDao()?.getSavedList()?.observe(viewLifecycleOwner) { savedList ->
+            savedListAdapter?.updateNews(ArrayList(savedList.map { it.article }))
+        }
     }
 }

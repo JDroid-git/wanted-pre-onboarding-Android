@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -45,7 +44,6 @@ class TopNewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentNewsListBinding.inflate(inflater, container, false)
 
@@ -54,7 +52,6 @@ class TopNewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         initListener()
         initObserve()
 
-        requestNewsList()
         return binding.root
     }
 
@@ -82,15 +79,11 @@ class TopNewsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun initObserve() {
         topNewsViewModel?.isLoading?.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it == true
+            binding.swipeLayout.isRefreshing = it == true
+//            binding.progressBar.isVisible = it == true
         }
         topNewsViewModel?.newsList?.observe(viewLifecycleOwner) {
-            binding.swipeLayout.isRefreshing = false
             topNewsListAdapter?.updateNews(it)
         }
-    }
-
-    private fun requestNewsList() {
-        binding.progressBar.isVisible = true
     }
 }

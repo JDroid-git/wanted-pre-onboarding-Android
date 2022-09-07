@@ -1,5 +1,7 @@
 package com.example.wantednews.ui.activity.main.common.fragment.news
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import com.example.wantednews.room.SaveArticleDao
 import com.example.wantednews.room.SaveArticleDatabase
 import com.example.wantednews.room.SaveArticles
 import com.example.wantednews.ui.activity.main.MainActivity
+import com.example.wantednews.util.DateUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,6 +40,9 @@ class NewsDetailFragment : Fragment(), View.OnClickListener {
                         }
                     }
                 }
+            }
+            binding?.btnReadMore?.id -> {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(newsInfo?.url)))
             }
         }
     }
@@ -80,12 +86,13 @@ class NewsDetailFragment : Fragment(), View.OnClickListener {
             }
             binding?.txtTitle?.text = it.title
             binding?.txtWriter?.text = it.author
-            binding?.txtDate?.text = it.publishedAt
+            binding?.txtDate?.text = DateUtil.compareDate(it.publishedAt ?: "")
             binding?.txtContent?.text = it.content
         }
     }
 
     private fun initListener() {
         binding?.chkSave?.setOnClickListener(this)
+        binding?.btnReadMore?.setOnClickListener(this)
     }
 }

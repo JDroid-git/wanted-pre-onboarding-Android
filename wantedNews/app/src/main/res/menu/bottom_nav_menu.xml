@@ -4,16 +4,16 @@
     <item
         android:id="@+id/nav_bottom_top_news"
         android:icon="@drawable/sel_ic_news"
-        android:title="@string/title_top_news" />
+        android:title="@string/nav_top_news" />
 
     <item
         android:id="@+id/nav_bottom_categories"
         android:icon="@drawable/sel_ic_category"
-        android:title="@string/title_categories" />
+        android:title="@string/nav_categories" />
 
     <item
         android:id="@+id/nav_bottom_saved"
         android:icon="@drawable/sel_ic_save"
-        android:title="@string/title_saved" />
+        android:title="@string/nav_saved" />
 
 </menu>

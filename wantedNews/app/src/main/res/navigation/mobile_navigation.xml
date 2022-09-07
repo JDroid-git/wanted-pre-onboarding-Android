@@ -11,7 +11,7 @@
         <fragment
             android:id="@+id/topNewsFragment"
             android:name="com.example.wantednews.ui.activity.main.fragment.topnews.TopNewsFragment"
-            android:label="@string/title_top_news"
+            android:label="@string/top_news_title"
             tools:layout="@layout/fragment_news_list">
             <action
                 android:id="@+id/action_news_detail_fragment"
@@ -29,11 +29,11 @@
         <fragment
             android:id="@+id/categoriesFragment"
             android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoriesFragment"
-            android:label="@string/title_categories"
+            android:label="@string/category_title"
             tools:layout="@layout/fragment_categories">
             <action
                 android:id="@+id/action_category_news_list_fragment"
-                app:destination="@id/categoryNewsListFragment"/>
+                app:destination="@id/categoryNewsListFragment" />
         </fragment>
         <fragment
             android:id="@+id/categoryNewsListFragment"
@@ -55,13 +55,12 @@
         <fragment
             android:id="@+id/savedFragment"
             android:name="com.example.wantednews.ui.activity.main.fragment.saved.SavedFragment"
-            android:label="@string/title_saved"
-            tools:layout="@layout/fragment_saved">
+            android:label="@string/saved_title"
+            tools:layout="@layout/fragment_news_list">
             <action
                 android:id="@+id/action_news_detail_fragment"
                 app:destination="@id/newsDetailFragment" />
         </fragment>
-
         <fragment
             android:id="@+id/newsDetailFragment"
             android:name="com.example.wantednews.ui.activity.main.common.fragment.news.NewsDetailFragment"

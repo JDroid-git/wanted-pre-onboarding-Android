@@ -14,6 +14,6 @@ object Constants {
     }
 
     object Countries {
-        const val COUNTRY_KR = "kr"
+        const val COUNTRY_US = "us"
     }
 }

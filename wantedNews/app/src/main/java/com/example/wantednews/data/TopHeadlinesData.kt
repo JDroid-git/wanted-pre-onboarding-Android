@@ -14,7 +14,7 @@ object TopHeadlinesData {
     @Parcelize
     data class Source(
         val name: String?,
-        val id: Int?
+        val id: String?
     ) : Parcelable
 
     @Parcelize
