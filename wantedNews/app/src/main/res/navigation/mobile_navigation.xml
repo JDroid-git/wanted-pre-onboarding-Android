@@ -5,57 +5,66 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_bottom_top_news">
 
-    <fragment
-        android:id="@+id/nav_bottom_top_news"
-        android:name="com.example.wantednews.ui.activity.main.fragment.topnews.TopNewsFragment"
-        android:label="@string/title_top_news"
-        tools:layout="@layout/fragment_news_list">
-        <action
-            android:id="@+id/action_news_detail_fragment"
-            app:destination="@id/newsDetailFragment"
-            app:popUpTo="@id/nav_bottom_top_news"
-            app:popUpToInclusive="false" />
+    <navigation
+        android:id="@id/nav_bottom_top_news"
+        app:startDestination="@id/topNewsFragment">
+        <fragment
+            android:id="@+id/topNewsFragment"
+            android:name="com.example.wantednews.ui.activity.main.fragment.topnews.TopNewsFragment"
+            android:label="@string/title_top_news"
+            tools:layout="@layout/fragment_news_list">
+            <action
+                android:id="@+id/action_news_detail_fragment"
+                app:destination="@id/newsDetailFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/newsDetailFragment"
+            android:name="com.example.wantednews.ui.activity.main.common.fragment.news.NewsDetailFragment"
+            tools:layout="@layout/fragment_news_detail" />
+    </navigation>
 
-    </fragment>
+    <navigation
+        android:id="@id/nav_bottom_categories"
+        app:startDestination="@id/categoriesFragment">
+        <fragment
+            android:id="@+id/categoriesFragment"
+            android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoriesFragment"
+            android:label="@string/title_categories"
+            tools:layout="@layout/fragment_categories">
+            <action
+                android:id="@+id/action_category_news_list_fragment"
+                app:destination="@id/categoryNewsListFragment"/>
+        </fragment>
+        <fragment
+            android:id="@+id/categoryNewsListFragment"
+            android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoryNewsListFragment"
+            tools:layout="@layout/fragment_news_list">
+            <action
+                android:id="@+id/action_news_detail_fragment"
+                app:destination="@id/newsDetailFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/newsDetailFragment"
+            android:name="com.example.wantednews.ui.activity.main.common.fragment.news.NewsDetailFragment"
+            tools:layout="@layout/fragment_news_detail" />
+    </navigation>
 
-    <fragment
-        android:id="@+id/nav_bottom_categories"
-        android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoriesFragment"
-        android:label="@string/title_categories"
-        tools:layout="@layout/fragment_categories">
-        <action
-            android:id="@+id/action_category_news_list_fragment"
-            app:destination="@id/categoryNewsListFragment"
-            app:popUpTo="@id/nav_bottom_categories"
-            app:popUpToInclusive="false" />
-    </fragment>
-
-    <fragment
+    <navigation
         android:id="@+id/nav_bottom_saved"
-        android:name="com.example.wantednews.ui.activity.main.fragment.saved.SavedFragment"
-        android:label="@string/title_saved"
-        tools:layout="@layout/fragment_saved">
-        <action
-            android:id="@+id/action_news_detail_fragment"
-            app:destination="@id/newsDetailFragment"
-            app:popUpTo="@id/nav_bottom_saved"
-            app:popUpToInclusive="false" />
-    </fragment>
+        app:startDestination="@id/savedFragment">
+        <fragment
+            android:id="@+id/savedFragment"
+            android:name="com.example.wantednews.ui.activity.main.fragment.saved.SavedFragment"
+            android:label="@string/title_saved"
+            tools:layout="@layout/fragment_saved">
+            <action
+                android:id="@+id/action_news_detail_fragment"
+                app:destination="@id/newsDetailFragment" />
+        </fragment>
 
-
-    <fragment
-        android:id="@+id/newsDetailFragment"
-        android:name="com.example.wantednews.ui.activity.main.common.fragment.news.NewsDetailFragment"
-        tools:layout="@layout/fragment_news_detail" />
-
-    <fragment
-        android:id="@+id/categoryNewsListFragment"
-        android:name="com.example.wantednews.ui.activity.main.fragment.categories.CategoryNewsListFragment"
-        tools:layout="@layout/fragment_news_list">
-        <action
-            android:id="@+id/action_news_detail_fragment"
-            app:destination="@id/newsDetailFragment"
-            app:popUpTo="@id/newsDetailFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
+        <fragment
+            android:id="@+id/newsDetailFragment"
+            android:name="com.example.wantednews.ui.activity.main.common.fragment.news.NewsDetailFragment"
+            tools:layout="@layout/fragment_news_detail" />
+    </navigation>
 </navigation>

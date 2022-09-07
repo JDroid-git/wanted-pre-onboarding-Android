@@ -60,7 +60,10 @@ class NewsDetailFragment : Fragment(), View.OnClickListener {
 
     private fun initLayout() {
         newsInfo?.let {
-            (requireActivity() as MainActivity).supportActionBar?.title = it.title
+            (requireActivity() as MainActivity).supportActionBar?.apply {
+                title = it.title
+                setDisplayHomeAsUpEnabled(true)
+            }
 
             CoroutineScope(Dispatchers.IO).launch {
                 val isSaved = articleDao?.isSaved(it)
@@ -78,7 +81,7 @@ class NewsDetailFragment : Fragment(), View.OnClickListener {
             binding?.txtTitle?.text = it.title
             binding?.txtWriter?.text = it.author
             binding?.txtDate?.text = it.publishedAt
-            binding?.txtContent?.text = it.description
+            binding?.txtContent?.text = it.content
         }
     }
 

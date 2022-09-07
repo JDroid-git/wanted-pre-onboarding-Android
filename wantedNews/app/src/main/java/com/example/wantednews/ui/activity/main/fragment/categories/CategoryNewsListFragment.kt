@@ -17,6 +17,7 @@ import com.example.wantednews.data.TopHeadlinesData
 import com.example.wantednews.databinding.FragmentNewsListBinding
 import com.example.wantednews.server.ServerService
 import com.example.wantednews.server.ServerCallback
+import com.example.wantednews.ui.activity.main.MainActivity
 import com.example.wantednews.ui.activity.main.common.adapter.NewsListAdapter
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -95,7 +96,8 @@ class CategoryNewsListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListene
     }
 
     private fun initLayout() {
-        categoryNewsListAdapter = NewsListAdapter(newsList, onClickListener)
+        (requireActivity() as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        categoryNewsListAdapter = NewsListAdapter(onClickListener)
         binding.newsList.adapter = categoryNewsListAdapter
     }
 
@@ -123,6 +125,6 @@ class CategoryNewsListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListene
     private fun requestNewsList(page: Int) {
         binding.progressBar.isVisible = true
         Log.d("pages", "$page")
-        ServerService.getTopHeadlines(serverCallback, Constants.Countries.COUNTRY_KR, category, null, null, page)
+//        ServerService.getTopHeadlines(serverCallback, Constants.Countries.COUNTRY_KR, category, null, null, page)
     }
 }

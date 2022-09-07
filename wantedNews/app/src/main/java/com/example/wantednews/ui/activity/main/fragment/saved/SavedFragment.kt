@@ -42,7 +42,7 @@ class SavedFragment : Fragment() {
 
     private fun initData() {
         SaveArticleDatabase.getInstance(requireContext().applicationContext)?.articleDao()?.getSavedList()?.observe(viewLifecycleOwner) {
-            binding.newsList.adapter = NewsListAdapter(ArrayList(it.map { it.article }), onClickListener)
+//            binding.newsList.adapter = NewsListAdapter(ArrayList(it.map { it.article }), onClickListener)
         }
     }
 
